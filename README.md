@@ -1,10 +1,10 @@
 # CStaticLibSeed
-**A starter project to make it easier to create static libraries with CMake and unit tests.
+**A starter project to make it easier to create static libraries with CMake and unit tests.**
 
 Includes CMake setup and sample tests for using the [Check](https://github.com/libcheck/check) 
 unit testing library
 
-**Dependencies
+**Dependencies**
 
 - CMake
 - FindPkgConfig
@@ -13,7 +13,7 @@ unit testing library
 
 **Warning** Seed has only been tested on Linux systems
 
-**Getting started
+**Getting started**
 1. Install dependencies and clone repo with git or download a zip. Check is available in most Linux distro repositories.
 1. Create a build folder in the project directory - mkdir build
 1. Navigate to the build folder and run `cmake ..`
@@ -25,7 +25,7 @@ unit testing library
 string in hello(). Re-run make and run the new testexec binary and you should see a failure
 
 
-**Customisation
+**Customisation**
 Congratulations, the seed is working! 
 
 In order to create your own library you can rename library.h and library.c, 
