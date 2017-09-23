@@ -1,9 +1,38 @@
-# CStaticLibSeed
-A quick and dirty seed to make it easier to create static libraries with CMake
+## CStaticLibSeed
+####A starter project to make it easier to create static libraries with CMake and unit tests. 
 
-1. Clone repo
-2. Rename library.c and library.h to <yourlibrary>. Change all references to library in arguments in CMakeLists to <yourlibrary>
-3. If using Clion open the repo as a new project. If not then create an empty build directory in the repo folder and run "cmake .." from there
-4. Write any tests you want in test/test.c. 
-5. Run 'make' from within the build folder. The library will be output as <yourlibrary>.a and the test executable will be testexec.
-   Alternatively CLion users can run "Build All" and specify the testexec as the executable
+Includes CMake setup and sample tests for using the [Check](https://github.com/libcheck/check) 
+unit testing library
+
+#####Dependencies
+
+- CMake
+- FindPkgConfig
+- Check
+- pthread( required by check )
+
+**Warning** Seed has only been tested on Linux systems
+
+#####Getting started
+1. Install dependencies and clone repo with git or download a zip. Check is available in most Linux distro repositories.
+1. Create a build folder in the project directory - mkdir build
+1. Navigate to the build folder and run `cmake ..`
+1. Hopefully you won't see any errors, if you do you likely have a missing dependency
+1. Run `make` in the project directory, if you have errors now it's probably my fault - please raise an issue!
+1. If all went well then you can navigate to test folder and run `./testexec` You should see output saying 3 tests of 
+3 passed
+1. If you wish you can break a test to make sure all is working as it should - go to library.c and change the output 
+string in hello(). Re-run make and run the new testexec binary and you should see a failure
+
+
+#####Customisation
+Congratulations, the seed is working! 
+
+In order to create your own library you can rename library.h and library.c, 
+make sure to update any references to these files in CmakeLists.txt files. 
+Also change the project name in CmakeLists.txt files. You'll need to run cmake again after doing this. 
+ 
+Finally make sure to replace this file with your own Readme.md 
+
+
+Happy hacking!
