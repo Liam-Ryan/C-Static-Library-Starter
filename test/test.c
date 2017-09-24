@@ -75,7 +75,7 @@ int main()
 	sr = srunner_create(s);
 
 	//Uncomment if you wish to debug unit tests or run valgrind on this file
-	srunner_set_fork_status(sr, CK_NOFORK);
+//	srunner_set_fork_status(sr, CK_NOFORK);
 
 	srunner_run_all(sr, CK_NORMAL);
 	number_failed = srunner_ntests_failed(sr);

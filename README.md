@@ -24,6 +24,10 @@ unit testing library
 1. If you wish you can break a test to make sure all is working as it should - go to library.c and change the output 
 string in hello(). Re-run make and run the new testexec binary and you should see a failure
 
+**Memory Leaks and debugging**
+To run valgrind properly or to debug your unit tests you need to uncomment `srunner_set_fork_status(sr, CK_NOFORK);` 
+in test.c. This does prevent check from catching segfaults so be aware of that. After uncommenting and rebuilding the 
+testexec binary with make you can then run `valgrind --leak-check=full ./testexec` from the build/test directory.  
 
 **Customisation**
 Congratulations, the seed is working! 
