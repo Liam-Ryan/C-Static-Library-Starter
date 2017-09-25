@@ -27,6 +27,11 @@ Seed has only been tested on Linux systems
 1. If you wish you can break a test to make sure all is working as it should - go to library.c and change the output 
 string in hello(). Re-run make and run the new testexec binary and you should see a failure
 
+**Want a shared library instead of static?**
+
+No problem, just change the option in library/CMakeLists.txt to ON before building per the instructions above and you'll
+have a shiny new .so library in no time!
+
 **Memory Leaks and debugging**
 
 To run valgrind properly or to debug your unit tests you need to uncomment `srunner_set_fork_status(sr, CK_NOFORK);` 

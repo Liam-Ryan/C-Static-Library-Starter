@@ -1,11 +1,7 @@
 project(c_static_seed_lib C)
 
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-###############################################################################
-# Set build features
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 ###############################################################################
 include(CheckCSourceCompiles)
@@ -29,19 +25,6 @@ endmacro(ck_check_include_file)
 
 ck_check_include_file("stdlib.h" HAVE_STDLIB_H)
 
-###############################################################################
-# Check functions
-# (Nothing to check for the money example)
-
-###############################################################################
-# Check defines
-# (Nothing to check for the money example)
-
-###############################################################################
-# Check struct members
-# (Nothing to check for the money example)
-
-###############################################################################
 # Check for integer types
 # (The following are used in check.h. Regardless if they are used in
 # the project, they will need to be checked in order to use Check).
@@ -62,11 +45,12 @@ endif(NOT HAVE_PID_T)
 
 ###############################################################################
 # Generate "config.h" from "cmake/config.h.cmake"
+# Generate "config.h" from "cmake/config.h.cmake"
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/config.h.in
-        ${CMAKE_CURRENT_BINARY_DIR}/config.h)
-include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR})
+        ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/config.h)
+include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR})
 add_definitions(-DHAVE_CONFIG_H)
-set(CONFIG_HEADER ${CMAKE_CURRENT_BINARY_DIR}/config.h)
+set(CONFIG_HEADER ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_CFG_INTDIR}/config.h)
 
 ###############################################################################
 # Subdirectories
@@ -76,6 +60,5 @@ add_subdirectory(test)
 ###############################################################################
 # Unit tests
 ENABLE_TESTING()
-ADD_TEST(UnitTests testexec)
 
 
